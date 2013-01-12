@@ -67,10 +67,10 @@ class PluginSitemap_ModuleTopic extends Module {
                         $oTopic->getUrl(),
                         $oTopic->getDateLastMod(),
                         Config::Get('plugin.sitemap.topics.sitemap_priority'),
-                        Config::Get('plugin.sitemap.topics.sitemap_changefreq')
+                        Config::Get('plugin.sitemap.topics.sitemap_changefreq'),
+                        $oTopic					
                 );
             }
-
             // тег 'blog_update' т.к. при редактировании блога его тип может измениться
             // с открытого на закрытый или наоборот
             $this->Cache_Set($aData, $sCacheKey, array('topic_new', 'blog_update'), Config::Get('plugin.sitemap.topics.cache_lifetime'));

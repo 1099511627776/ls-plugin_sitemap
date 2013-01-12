@@ -44,12 +44,13 @@ class PluginSitemap_ModuleSitemap extends Module {
      * @param mixed $sPriority
      * @return array 
      */
-    public function getDataForSitemapRow($sUrl, $sLastMod = null, $sChangeFreq = null, $sPriority = null) {
+    public function getDataForSitemapRow($sUrl, $sLastMod = null, $sChangeFreq = null, $sPriority = null,$oEntity = null) {   	
         return array(
             'loc' => $sUrl,
             'lastmod' => $this->_convDateToLastMod($sLastMod),
             'priority' => $sChangeFreq,
             'changefreq' => $sPriority,
+            'entity' => $oEntity,
         );
     }
 

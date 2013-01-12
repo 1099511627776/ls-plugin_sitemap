@@ -40,8 +40,11 @@ class PluginSitemap_ActionSitemap extends ActionPlugin {
                         array($this, 'PluginSitemap_Sitemap_GetDataFor' . $sName),
                         array($iCurrPage)
         );
-
-        $this->_displaySitemap($aData);
+        if($mapType = htmlspecialchars(getRequest('maptype'))){
+	        $this->_displaySitemap($aData,'sitemap_'.$mapType.'.tpl');
+        } else {
+	        $this->_displaySitemap($aData);
+        }
     }
 
     /**
@@ -77,11 +80,22 @@ class PluginSitemap_ActionSitemap extends ActionPlugin {
         $aData = array();
 
         $sRootWeb = rtrim(str_replace('index/', '', Router::GetPath('index')), '/');
+
+        $bUsemaptype = false;
+
+        if($mapType = htmlspecialchars(getRequest('maptype'))){
+        	$bUsemaptype = true;
+        }
+
         foreach ($aCounters as $sType => $iCount) {
             if ($iCount > 0) {
                 for ($i = 1; $i <= $iCount; ++$i) {
+                	$loc = $sRootWeb . '/sitemap_' . $sType . '_' . $i . '.xml';
+                	if($bUsemaptype) {
+                		$loc .= '?maptype='.$mapType;
+                	}
                     $aData[] = array(
-                        'loc' => $sRootWeb . '/sitemap_' . $sType . '_' . $i . '.xml'
+                        'loc' => $loc
                     );
                 }
             }
