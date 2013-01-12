@@ -12,7 +12,7 @@
 	{assign var="oTopic" value="{$oItem.entity}"}
 		<news:news>
 			<news:publication>
-				<news:name>{$oTopic->getTitle()}</news:name>
+				<news:name>{cfg name='view.name'}</news:name>
 				<news:language>{strip}
 					{if $oConfig->getValue('lang.current') == 'ukrainian'}
 						uk
