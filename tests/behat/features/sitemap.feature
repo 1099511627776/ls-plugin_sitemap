@@ -35,8 +35,8 @@ Feature: Greeting plugin standart features BDD
             And the response should contain "/blog/gadgets/1.html"
 
         Given I am on "/sitemap_topics_1.xml?maptype=google"
-            Then the response should contain "xmlns:news="http://www.google.com/schemas/sitemap-news/0.9""
-            And the response should contain "xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">"
+            Then the response should contain "xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\""
+            And the response should contain "xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\">"
             And the response should contain "<news:news>"
             And the response should contain "<news:title>"
             And the response should contain "<news:genres>"
