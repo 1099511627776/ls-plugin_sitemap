@@ -41,7 +41,7 @@ Feature: Greeting plugin standart features BDD
             And the response should contain "<news:title>"
             And the response should contain "<news:genres>"
             And the response should contain "<news:keywords>"
-            And the response should contain "<news:news>"
+            And the response should contain "</news:news>"
 
 
         Given I am on "/blog/3.html"
